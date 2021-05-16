@@ -1,0 +1,60 @@
+<!--https://github.com/flash2x/AnnieJS-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Annie2x</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
+    <script src="libs/annieCore.min.js"></script>
+    <script src="https://cdn.staticfile.org/PreloadJS/0.6.0/preloadjs.min.js"></script>
+    <!--如果有用到annieUI组件类,则需要开启下面的js-->
+    <!--<script src="libs/annieUI.min.js"></script>-->
+    <script>
+        window.swfBytes="#swfBytes#";
+    </script>
+    <script src="src/f2xMain.min.js?v=1621181117141"></script>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            border: 0px;
+            overflow: hidden;
+            position: absolute;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<!--如果不想canvas全屏而是作为html中的一个标签,请设置div的style.width和style.height为实际值如<div id="annieEngine" style="width:320px;height:576px;line-height:0;font-size:0"></div>-->
+<div id="annieEngine" style="line-height:0;font-size:0"></div>
+audio src="./resource/p1/s0.mp3" id="bgmusic" preload loop="loop"></audio>
+<script type="text/javascript">
+    document.ready(function () {
+        var preload = new createjs.LoadQueue(); //新建loading对象
+        preload.installPlugin(createjs.Sound); //加载音乐插件
+        preload.loadManifest([
+            {
+                id: "bgm",
+                src: "resource/p1/s0.mp3"
+            },
+        ]);
+
+        function loadProgress() {
+            console.log('加载中', preload.progress * 100 | 0 + " %")
+        }
+
+        function loadComplete() {
+            var audio = document.getElementById("bgmusic")
+            audio.play();
+        }
+
+        //加载过程执行
+        preload.on("progress", loadProgress);
+        //加载完成执行
+        preload.on("complete", loadComplete);
+    })
+
+</script>
+</body>
+</html>

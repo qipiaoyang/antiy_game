@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
     <script src="libs/annieCore.min.js"></script>
     <script src="https://cdn.staticfile.org/PreloadJS/0.6.0/preloadjs.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <!--如果有用到annieUI组件类,则需要开启下面的js-->
     <!--<script src="libs/annieUI.min.js"></script>-->
     <script>
@@ -30,7 +31,7 @@
 <div id="annieEngine" style="line-height:0;font-size:0"></div>
 audio src="./resource/p1/s0.mp3" id="bgmusic" preload loop="loop"></audio>
 <script type="text/javascript">
-    document.ready(function () {
+    $(function() {
         var preload = new createjs.LoadQueue(); //新建loading对象
         preload.installPlugin(createjs.Sound); //加载音乐插件
         preload.loadManifest([

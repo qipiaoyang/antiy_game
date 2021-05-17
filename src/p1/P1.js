@@ -13,6 +13,9 @@ AnnieRoot.p1.P1=class extends annie.Sprite{
 		s.option_b.text = "B: 测试数据bbbbbbbb";
 		s.option_c.text = "C: 测试数据cccccccc";
 		s.option_d.text = "D: 测试数据dddddddd";
+
+
+		annie.Tween.to(s.title)
 		var arr = ['a', 'b', 'c', 'd'];
 		var initText = function () {
 			for(var i = 0; i < 4; i ++) {
@@ -21,7 +24,8 @@ AnnieRoot.p1.P1=class extends annie.Sprite{
 				s[`option_${arr[i]}`].lineHeight = 40;
 			}
 		}
-		s.getSound(0)[0].play();
+		var sound = new annie.Sound('./resource/p1/s0.mp3');
+		sound.play2();
 		console.log(s.getSound(0))
 		initText();
 		s.option_a.addEventListener(annie.MouseEvent.CLICK, function (e) {
